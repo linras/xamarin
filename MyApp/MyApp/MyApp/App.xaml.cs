@@ -11,7 +11,8 @@ namespace MyApp
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new DogForm();
+            //MainPage = new MainPage();
         }
 
         protected override void OnStart()
