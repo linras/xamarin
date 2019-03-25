@@ -4,6 +4,7 @@
              x:Class="MyApp.DogForm">
     <ContentPage.Content>
         <StackLayout>
+            
             <Label Text="Simple dog form"/>
             
             <Label Text="Name: "/>
@@ -14,6 +15,8 @@
 
             <Label Text="Age: "/>
             <Entry Text="{Binding Age}" Placeholder="enter age"/>
+
+            <Button Text="Save dog" Command="{Binding SaveCommand}"/>
 
         </StackLayout>
     </ContentPage.Content>
