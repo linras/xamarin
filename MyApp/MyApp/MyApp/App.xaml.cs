@@ -2,6 +2,7 @@
 using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MyApp.Data;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MyApp
@@ -9,6 +10,18 @@ namespace MyApp
     public partial class App : Application
     {
         public static string FolderPath { get; private set; }
+        static DogDatabase database;
+        public static DogDatabase Database
+        {
+            get
+            {
+                if (database == null)
+                {
+                    database = new DogDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Dogs.db3"));
+                }
+                return database;
+            }
+        }
         public App()
         {
             InitializeComponent();

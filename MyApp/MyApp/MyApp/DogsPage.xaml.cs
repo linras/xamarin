@@ -18,26 +18,27 @@ namespace MyApp
 		{
 			InitializeComponent ();
 		}
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
 
-            var dogs = new List<Dog>();
+            listView.ItemsSource = await App.Database.GetDogsAsync();
+            //var dogs = new List<Dog>();
 
-            var files = Directory.EnumerateFiles(App.FolderPath, "*.dogs.txt");
-            foreach (var filename in files)
-            {
-                dogs.Add(new Dog
-                {
-                    Filename = filename,
-                    Description = File.ReadAllText(filename),
-                    Name = "Burek"
-                });
-            }
+            //var files = Directory.EnumerateFiles(App.FolderPath, "*.dogs.txt");
+            //foreach (var filename in files)
+            //{
+            //    dogs.Add(new Dog
+            //    {
+            //        Filename = filename,
+            //        Description = File.ReadAllText(filename),
+            //        Name = "Burek"
+            //    });
+            //}
 
-            listView.ItemsSource = dogs
-                .OrderBy(d => d.Name)
-                .ToList();
+            //listView.ItemsSource = dogs
+            //    .OrderBy(d => d.Name)
+            //    .ToList();
         }
 
         async void OnNoteAddedClicked(object sender, EventArgs e)

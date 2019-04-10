@@ -22,18 +22,20 @@ namespace MyApp
         {
             var dog = (Dog)BindingContext;
 
-            if (string.IsNullOrWhiteSpace(dog.Filename))
-            {
-                // Save
-                //var filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), $"{Path.GetRandomFileName()}.dogs.txt");
-                var filename = Path.Combine(App.FolderPath, $"{Path.GetRandomFileName()}.dogs.txt");
-                File.WriteAllText(filename, dog.Description);
-            }
-            else
-            {
-                // Update
-                File.WriteAllText(dog.Filename, dog.Description);
-            }
+            dog.Name = "Piszczel";
+            await App.Database.SaveDogAsync(dog);
+            //if (string.IsNullOrWhiteSpace(dog.Filename))
+            //{
+            //    // Save
+            //    //var filename = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), $"{Path.GetRandomFileName()}.dogs.txt");
+            //    var filename = Path.Combine(App.FolderPath, $"{Path.GetRandomFileName()}.dogs.txt");
+            //    File.WriteAllText(filename, dog.Description);
+            //}
+            //else
+            //{
+            //    // Update
+            //    File.WriteAllText(dog.Filename, dog.Description);
+            //}
 
             await Navigation.PopAsync();
         }
@@ -42,10 +44,11 @@ namespace MyApp
         {
             var dog = (Dog)BindingContext;
 
-            if (File.Exists(dog.Filename))
-            {
-                File.Delete(dog.Filename);
-            }
+            await App.Database.DeleteDogAsync(dog);
+            //if (File.Exists(dog.Filename))
+            //{
+            //    File.Delete(dog.Filename);
+            //}
 
             await Navigation.PopAsync();
         }
