@@ -21,19 +21,20 @@ namespace MyApp
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-
-            //var dogs = new List<Dog>();
-            //dogs = await App.Database.GetDogsAsync();
-            /*
+            
+            var dogs = new List<Dog>();
+            dogs = await App.Database.GetDogsAsync();
+            //Sorting events by the date
             dogs.OrderBy(d => d.Date);
             foreach (Dog d in dogs)
             {
-                if (d.Date.Add(d.Time).CompareTo(DateTime.Now) < 0)
+                //deleting past events
+                if (d.Date.Add(d.Time).CompareTo(DateTime.Now) < 0) 
                     await App.Database.DeleteDogAsync(d);
             }
-            */
-
-            listView.ItemsSource = await App.Database.GetDogsAsync();
+            
+            listView.ItemsSource = dogs;
+            //listView.ItemsSource = await App.Database.GetDogsAsync();
 
             //var dogs = new List<Dog>();
 

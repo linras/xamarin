@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyApp.DogEntryPage"
              xmlns:behaviors="clr-namespace:MyApp.Validators"
-             xmlns:behaviors1="using:MyApp.Validators"
              Title="Note Entry">
     <StackLayout Margin="20">
         <DatePicker Date="{Binding Date}" />
@@ -11,7 +10,7 @@
         <Entry Text="{Binding Name}"
                Placeholder="Enter dog name">
                 <Entry.Behaviors>
-                    <behaviors1:NameBehavior />
+                    <behaviors:NameBehavior />
                 </Entry.Behaviors>
         </Entry>
         <Editor Placeholder="Enter your note"
