@@ -22,7 +22,19 @@ namespace MyApp
         {
             base.OnAppearing();
 
+            //var dogs = new List<Dog>();
+            //dogs = await App.Database.GetDogsAsync();
+            /*
+            dogs.OrderBy(d => d.Date);
+            foreach (Dog d in dogs)
+            {
+                if (d.Date.Add(d.Time).CompareTo(DateTime.Now) < 0)
+                    await App.Database.DeleteDogAsync(d);
+            }
+            */
+
             listView.ItemsSource = await App.Database.GetDogsAsync();
+
             //var dogs = new List<Dog>();
 
             //var files = Directory.EnumerateFiles(App.FolderPath, "*.dogs.txt");

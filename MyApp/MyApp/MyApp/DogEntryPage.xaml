@@ -1,12 +1,22 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyApp.DogEntryPage"
+             xmlns:behaviors="clr-namespace:MyApp.Validators"
+             xmlns:behaviors1="using:MyApp.Validators"
              Title="Note Entry">
     <StackLayout Margin="20">
+        <DatePicker Date="{Binding Date}" />
+        <TimePicker Time="{Binding Time}" />
+        <Entry Text="{Binding Name}"
+               Placeholder="Enter dog name">
+                <Entry.Behaviors>
+                    <behaviors1:NameBehavior />
+                </Entry.Behaviors>
+        </Entry>
         <Editor Placeholder="Enter your note"
-                Text="{Binding Description}"
-                HeightRequest="100" />
+                Text="{Binding Description}" />
+        
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />

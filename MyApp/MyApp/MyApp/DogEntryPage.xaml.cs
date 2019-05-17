@@ -22,7 +22,7 @@ namespace MyApp
         {
             var dog = (Dog)BindingContext;
 
-            dog.Name = "Piszczel";
+            //dog.Name = "Piszczel";
             await App.Database.SaveDogAsync(dog);
             //if (string.IsNullOrWhiteSpace(dog.Filename))
             //{

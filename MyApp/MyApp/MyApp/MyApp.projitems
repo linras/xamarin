@@ -34,6 +34,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\Dog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\DescriptionBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\NameBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Validators\ValidFormat.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)DogForm.xaml">
