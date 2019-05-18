@@ -17,6 +17,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Data\DogDatabase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Dependency\IPicturePicker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DogEntryPage.xaml.cs">
       <DependentUpon>DogEntryPage.xaml</DependentUpon>
       <SubType>Code</SubType>

@@ -26,6 +26,7 @@ namespace MyApp
             {
                 if (database == null)
                 {
+                    //DEPENDENCY SERVICE
                     database = new DogDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Dogs.db3"));
                 }
                 return database;
@@ -36,11 +37,22 @@ namespace MyApp
             
             InitializeComponent();
 
+            //DEPENDENCY SERVICE
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
             MainPage = new NavigationPage(new DogsPage());
+
+            //Button pickPictureButton = new Button
+            //{
+            //    Text = "Pick Photo",
+            //    VerticalOptions = LayoutOptions.CenterAndExpand,
+            //    HorizontalOptions = LayoutOptions.CenterAndExpand
+            //};
+            //stack.Children.Add(pickPictureButton);
             //MainPage = new DogForm();
             //MainPage = new MainPage();
         }
+
+
 
         protected override void OnStart()
         {

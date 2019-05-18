@@ -26,6 +26,9 @@
             <Button Grid.Column="1"
                     Text="Delete"
                     Clicked="OnDeleteButtonClicked"/>
+            <Button Grid.Column="2"
+                    Text="Add photo"
+                    Clicked="OnAddPhotoButtonClicked"/>
         </Grid>
     </StackLayout>
 </ContentPage>

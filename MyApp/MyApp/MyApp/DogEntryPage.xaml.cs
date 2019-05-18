@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyApp.Dependency;
 using MyApp.Models;
 
 using Xamarin.Forms;
@@ -21,7 +22,8 @@ namespace MyApp
             {
                 DisplayAlert("Zzz...", "Redirection due to falling asleep", "uch");
                 Application.Current.MainPage.Navigation.PopAsync();
-//                Application.Current.MainPage.Navigation.PushModalAsync(new DogsPage(), true);
+                //                Application.Current.MainPage.Navigation.PushModalAsync(new DogsPage(), true);
+
             });
         }
         async void OnSaveButtonClicked(object sender, EventArgs e)
@@ -57,6 +59,20 @@ namespace MyApp
             //}
 
             await Navigation.PopAsync();
+        }
+
+        async void OnAddPhotoButtonClicked(object sender, EventArgs e)
+        {
+            IPicturePicker ipp = DependencyService.Get<IPicturePicker>();
+            Stream stream = await ipp.GetImageStreamAsync();
+            if (stream != null)
+            {
+                Image image = new Image
+                {
+                    Source = ImageSource.FromStream(() => stream),
+                    BackgroundColor = Color.Gray
+                };
+            }
         }
     }
 }
