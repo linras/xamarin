@@ -67,11 +67,13 @@ namespace MyApp
             Stream stream = await ipp.GetImageStreamAsync();
             if (stream != null)
             {
-                Image image = new Image
-                {
-                    Source = ImageSource.FromStream(() => stream),
-                    BackgroundColor = Color.Gray
-                };
+                //Image image = new Image
+                //{
+                //    Source = ImageSource.FromStream(() => stream),
+                //    BackgroundColor = Color.Gray
+                //};
+                Image img = this.FindByName<Image>("doggoImage");
+                img.Source = ImageSource.FromStream(() => stream);
             }
         }
     }

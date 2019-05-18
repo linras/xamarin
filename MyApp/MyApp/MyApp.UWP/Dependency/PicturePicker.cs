@@ -31,6 +31,8 @@ namespace MyApp.UWP.Dependency
             // Get a file and return a Stream
             StorageFile storageFile = await openPicker.PickSingleFileAsync();
 
+
+
             if (storageFile == null)
             {
                 return null;

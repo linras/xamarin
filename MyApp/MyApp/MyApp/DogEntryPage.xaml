@@ -4,31 +4,36 @@
              x:Class="MyApp.DogEntryPage"
              xmlns:behaviors="clr-namespace:MyApp.Validators"
              Title="Note Entry">
-    <StackLayout Margin="20">
-        <DatePicker Date="{Binding Date}" />
-        <TimePicker Time="{Binding Time}" />
-        <Entry Text="{Binding Name}"
+    <ScrollView>
+        <StackLayout Margin="20">
+            <Image x:Name="doggoImage"/>
+            <DatePicker Date="{Binding Date}" />
+            <TimePicker Time="{Binding Time}" />
+            <Entry Text="{Binding Name}"
                Placeholder="Enter dog name">
                 <Entry.Behaviors>
                     <behaviors:NameBehavior />
                 </Entry.Behaviors>
-        </Entry>
-        <Editor Placeholder="Enter your note"
+            </Entry>
+            <Editor Placeholder="Enter your note"
                 Text="{Binding Description}" />
-        
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <Button Text="Save"
+            <Label Text="{Binding FilePath}">
+            </Label>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Text="Save"
                     Clicked="OnSaveButtonClicked" />
-            <Button Grid.Column="1"
+                <Button Grid.Column="1"
                     Text="Delete"
                     Clicked="OnDeleteButtonClicked"/>
-            <Button Grid.Column="2"
+                <Button Grid.Column="2"
                     Text="Add photo"
                     Clicked="OnAddPhotoButtonClicked"/>
-        </Grid>
-    </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
