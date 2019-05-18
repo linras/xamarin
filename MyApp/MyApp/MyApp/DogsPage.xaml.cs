@@ -20,17 +20,29 @@ namespace MyApp
 		}
         protected override async void OnAppearing()
         {
+            MessagingCenter.Subscribe<App>(this, "App started.", (sender) =>
+            {
+                DisplayAlert("Alert", "Welcome, this is cool dog app", "OK");
+            });
+            //MessagingCenter.Subscribe<App>(this, "Session expired.", (sender) =>
+            //{
+            //    DisplayAlert("Alert", "You have been alerted", "OK");
+            //});
             base.OnAppearing();
-            
             var dogs = new List<Dog>();
             dogs = await App.Database.GetDogsAsync();
-            //Sorting events by the date
+            
+            //Sorting events by date
             dogs.OrderBy(d => d.Date);
             foreach (Dog d in dogs)
             {
+                DateTime dt = d.Date.Add(d.Time);
+                Console.WriteLine(dt.ToString() + " vs " + DateTime.Now.ToString());
                 //deleting past events
-                if (d.Date.Add(d.Time).CompareTo(DateTime.Now) < 0) 
+                if (dt.CompareTo(DateTime.Now) < 0)
+                {
                     await App.Database.DeleteDogAsync(d);
+                }
             }
             
             listView.ItemsSource = dogs;

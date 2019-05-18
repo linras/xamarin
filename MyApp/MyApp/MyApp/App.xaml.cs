@@ -1,8 +1,15 @@
-﻿using System;
+﻿
+using MyApp.Data;
+using MyApp.Models;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using MyApp.Data;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace MyApp
@@ -11,6 +18,8 @@ namespace MyApp
     {
         public static string FolderPath { get; private set; }
         static DogDatabase database;
+        private DateTime SleepStart;
+        private readonly TimeSpan SleepMax = TimeSpan.FromSeconds(5);
         public static DogDatabase Database
         {
             get
@@ -24,8 +33,8 @@ namespace MyApp
         }
         public App()
         {
+            
             InitializeComponent();
-
 
             FolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData));
             MainPage = new NavigationPage(new DogsPage());
@@ -35,17 +44,21 @@ namespace MyApp
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            MessagingCenter.Send<App>(this, "App started.");
         }
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            SleepStart = DateTime.Now;
         }
 
         protected override void OnResume()
         {
-            // Handle when your app resumes
+            if (DateTime.Now - SleepStart > SleepMax)
+            {
+                MessagingCenter.Send<App>(this, "Session expired.");
+                
+            }
         }
     }
 }

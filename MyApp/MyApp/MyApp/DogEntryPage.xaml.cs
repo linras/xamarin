@@ -17,7 +17,13 @@ namespace MyApp
 		public DogEntryPage ()
 		{
 			InitializeComponent ();
-		}
+            MessagingCenter.Subscribe<App>(this, "Session expired.", (sender) =>
+            {
+                DisplayAlert("Zzz...", "Redirection due to falling asleep", "uch");
+                Application.Current.MainPage.Navigation.PopAsync();
+//                Application.Current.MainPage.Navigation.PushModalAsync(new DogsPage(), true);
+            });
+        }
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             var dog = (Dog)BindingContext;
