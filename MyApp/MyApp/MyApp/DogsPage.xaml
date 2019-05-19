@@ -2,19 +2,32 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyApp.DogsPage">
+    <RelativeLayout>
+        <Image x:Name="doggoImage" Opacity="0.4"
+                RelativeLayout.WidthConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Width}"
+                RelativeLayout.HeightConstraint=
+                  "{ConstraintExpression Type=RelativeToParent, Property=Height}"/>
+
+        <ListView x:Name="listView"
+              Margin="20"
+              ItemSelected="OnListViewItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Description}"
+                          Detail="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </RelativeLayout>
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add photo"
+                     Icon="image.png"
+                     Clicked="OnAddPhotoButtonClicked"/>
         <ToolbarItem Text="New note"
                      Icon="plus.png"
                      Clicked="OnNoteAddedClicked"/>
     </ContentPage.ToolbarItems>
-    <ListView x:Name="listView"
-              Margin="20"
-              ItemSelected="OnListViewItemSelected">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <TextCell Text="{Binding Description}"
-                          Detail="{Binding Name}" />
-            </DataTemplate>
-        </ListView.ItemTemplate>
-    </ListView>
+    
+    
 </ContentPage>

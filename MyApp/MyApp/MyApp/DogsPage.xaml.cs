@@ -1,4 +1,5 @@
-﻿using MyApp.Models;
+﻿using MyApp.Dependency;
+using MyApp.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -82,6 +83,21 @@ namespace MyApp
                 {
                     BindingContext = e.SelectedItem as Dog
                 });
+            }
+        }
+        async void OnAddPhotoButtonClicked(object sender, EventArgs e)
+        {
+            IPicturePicker ipp = DependencyService.Get<IPicturePicker>();
+            Stream stream = await ipp.GetImageStreamAsync();
+            if (stream != null)
+            {
+                //Image image = new Image
+                //{
+                //    Source = ImageSource.FromStream(() => stream),
+                //    BackgroundColor = Color.Gray
+                //};
+                Image img = this.FindByName<Image>("doggoImage");
+                img.Source = ImageSource.FromStream(() => stream);
             }
         }
     }
