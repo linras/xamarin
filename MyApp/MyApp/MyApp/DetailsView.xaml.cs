@@ -12,12 +12,12 @@ using Xamarin.Forms.Xaml;
 
 namespace MyApp
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class DogEntryPage : ContentPage
-	{
-		public DogEntryPage ()
-		{
-			InitializeComponent ();
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class DetailsView : ContentPage
+    {
+        public DetailsView()
+        {
+            InitializeComponent();
             MessagingCenter.Subscribe<App>(this, "Session expired.", (sender) =>
             {
                 DisplayAlert("Zzz...", "Redirection due to falling asleep", "uch");
@@ -29,8 +29,7 @@ namespace MyApp
         async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             var dog = (Dog)BindingContext;
-            dog.Date = dog.Date.Add(dog.Time);
-            dog.City = dog.City + " " + dog.District;
+
             //dog.Name = "Piszczel";
             await App.Database.SaveDogAsync(dog);
             //if (string.IsNullOrWhiteSpace(dog.Filename))
@@ -52,8 +51,9 @@ namespace MyApp
         async void OnDeleteButtonClicked(object sender, EventArgs e)
         {
             var dog = (Dog)BindingContext;
-
-            await App.Database.DeleteDogAsync(dog);
+            if (dog.Try.Equals(dog.Password))
+                await App.Database.DeleteDogAsync(dog);
+            else dog.Try = "";
             //if (File.Exists(dog.Filename))
             //{
             //    File.Delete(dog.Filename);

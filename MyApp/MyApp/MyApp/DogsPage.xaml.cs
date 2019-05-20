@@ -37,7 +37,7 @@ namespace MyApp
             dogs.OrderBy(d => d.Date);
             foreach (Dog d in dogs)
             {
-                DateTime dt = d.Date.Add(d.Time);
+                DateTime dt = d.Date;
                 Console.WriteLine(dt.ToString() + " vs " + DateTime.Now.ToString());
                 //deleting past events
                 if (dt.CompareTo(DateTime.Now) < 0)
@@ -67,6 +67,8 @@ namespace MyApp
             //    .ToList();
         }
 
+        
+
         async void OnNoteAddedClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new DogEntryPage
@@ -79,7 +81,7 @@ namespace MyApp
         {
             if (e.SelectedItem != null)
             {
-                await Navigation.PushAsync(new DogEntryPage
+                await Navigation.PushAsync(new DetailsView//DogEntryPage
                 {
                     BindingContext = e.SelectedItem as Dog
                 });

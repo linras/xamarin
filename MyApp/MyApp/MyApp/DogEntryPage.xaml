@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyApp.DogEntryPage"
              xmlns:behaviors="clr-namespace:MyApp.Validators"
-             Title="Note Entry">
+             Title="New advertisement">
     <ScrollView>
         <StackLayout Margin="20">
             <Image x:Name="doggoImage"/>
@@ -15,10 +15,16 @@
                     <behaviors:NameBehavior />
                 </Entry.Behaviors>
             </Entry>
-            <Editor Placeholder="Enter your note"
+            <Entry Text="{Binding City}"
+               Placeholder="Enter city">
+            </Entry>
+            <Entry Text="{Binding District}"
+               Placeholder="Enter city district">
+            </Entry>
+            <Editor Placeholder="Contact info etc."
                 Text="{Binding Description}" />
-            <Label Text="{Binding FilePath}">
-            </Label>
+            <Editor Placeholder="Enter password (in case of deletion)"
+                Text="{Binding Password}" />
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -28,11 +34,11 @@
                 <Button Text="Save"
                     Clicked="OnSaveButtonClicked" />
                 <Button Grid.Column="1"
-                    Text="Delete"
+                    Text="Cancel"
                     Clicked="OnDeleteButtonClicked"/>
-                <Button Grid.Column="2"
+                <!--<Button Grid.Column="2"
                     Text="Add photo"
-                    Clicked="OnAddPhotoButtonClicked"/>
+                    Clicked="OnAddPhotoButtonClicked"/>-->
             </Grid>
         </StackLayout>
     </ScrollView>

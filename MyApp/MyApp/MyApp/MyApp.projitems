@@ -10,7 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -18,6 +17,10 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Data\DogDatabase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Dependency\IPicturePicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DetailsView.xaml.cs">
+      <DependentUpon>DetailsView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)DogEntryPage.xaml.cs">
       <DependentUpon>DogEntryPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -30,9 +33,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)DogsPage.xaml.cs">
       <DependentUpon>DogsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Models\Dog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\DescriptionBehavior.cs" />
@@ -53,6 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)DogsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)DetailsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

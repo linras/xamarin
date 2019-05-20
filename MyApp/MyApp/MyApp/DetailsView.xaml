@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyApp.DetailsView"
+             Title="Detail">
+    <ScrollView>
+        <StackLayout Margin="20" MinimumHeightRequest="3">
+            <Image x:Name="doggoImage"/>
+            <Label>Where:</Label>
+            <Label Text="{Binding City}" TextColor="#000000"></Label>
+            <Label>When:</Label>
+            <Label Text="{Binding Date}" TextColor="#000000"></Label>
+            <Label>Dog name:</Label>
+            <Label Text="{Binding Name}" TextColor="#77d065"></Label>
+            <Label Text="{Binding Description}" TextColor="#d07765"></Label>
+            <Editor Placeholder="Enter password (to delete)"
+                Text="{Binding Try}" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="1"
+                    Text="Delete"
+                    Clicked="OnDeleteButtonClicked"/>
+                <!--<Button Grid.Column="2"
+                    Text="Add photo"
+                    Clicked="OnAddPhotoButtonClicked"/>-->
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
