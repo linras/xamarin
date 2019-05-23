@@ -32,9 +32,10 @@ namespace MyApp
             base.OnAppearing();
             var dogs = new List<Dog>();
             dogs = await App.Database.GetDogsAsync();
-            
+
             //Sorting events by date
-            dogs.OrderBy(d => d.Date);
+            dogs = dogs.OrderBy(d => d.Date).OrderBy(d => d.City).OrderBy(d => d.District).ToList();
+            //dogs.OrderBy(d => d.Date);
             foreach (Dog d in dogs)
             {
                 DateTime dt = d.Date;
