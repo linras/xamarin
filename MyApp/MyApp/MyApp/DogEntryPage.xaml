@@ -31,11 +31,15 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Button Text="Save"
-                    Clicked="OnSaveButtonClicked" />
-                <Button Grid.Column="1"
+                <Button 
+                    Command="{Binding SaveDog, Mode=TwoWay}"
+                    Text="Save"
+                 />
+                <Button 
+                    Command="{Binding Back, Mode=TwoWay}"
+                    Grid.Column="1"
                     Text="Cancel"
-                    Clicked="OnDeleteButtonClicked"/>
+                 />
                 <!--<Button Grid.Column="2"
                     Text="Add photo"
                     Clicked="OnAddPhotoButtonClicked"/>-->

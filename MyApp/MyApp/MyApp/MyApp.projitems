@@ -25,25 +25,15 @@
       <DependentUpon>DogEntryPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)DogForm.xaml.cs">
-      <DependentUpon>DogForm.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)DogFormViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DogsPage.xaml.cs">
       <DependentUpon>DogsPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Models\BaseViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Dog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\DogFormViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\DescriptionBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Validators\NameBehavior.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Validators\ValidFormat.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)DogForm.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)DogEntryPage.xaml">

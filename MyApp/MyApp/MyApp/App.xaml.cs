@@ -68,7 +68,7 @@ namespace MyApp
         {
             if (DateTime.Now - SleepStart > SleepMax)
             {
-                MessagingCenter.Send<App>(this, "Session expired.");
+                MessagingCenter.Send<App>(this, "Sleep.");
                 
             }
         }

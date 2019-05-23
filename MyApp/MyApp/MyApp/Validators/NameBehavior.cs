@@ -25,7 +25,7 @@ namespace MyApp.Validators
             var name = textChangedEventArgs.NewTextValue;
             var nameEntry = sender as Entry;
 
-            if (Regex.IsMatch(name, "^[A-ZĆŁŚŹŻ][a-ząćęłńóśźżA-ZĄĆĘŁŃÓŚŹŻ-]{2,20}$"))
+            if (Regex.IsMatch(name, "^[A-Z][a-zA-Z]{2,20}$"))
             {
                 nameEntry.TextColor = Color.Black;
             }

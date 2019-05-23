@@ -18,9 +18,21 @@ namespace MyApp
 		public DogEntryPage ()
 		{
 			InitializeComponent ();
-            MessagingCenter.Subscribe<App>(this, "Session expired.", (sender) =>
+            MessagingCenter.Subscribe<App>(this, "Sleep.", (sender) =>
             {
-                DisplayAlert("Zzz...", "Redirection due to falling asleep", "uch");
+                DisplayAlert("Zzz...", "Redirection!", "uch");
+                Application.Current.MainPage.Navigation.PopAsync();
+                //                Application.Current.MainPage.Navigation.PushModalAsync(new DogsPage(), true);
+
+            });
+        }
+        public DogEntryPage(DogFormViewModel viewModel)
+        {
+            InitializeComponent();
+            BindingContext = viewModel;
+            MessagingCenter.Subscribe<App>(this, "Sleep.", (sender) =>
+            {
+                DisplayAlert("Zzz...", "Redirection!", "uch");
                 Application.Current.MainPage.Navigation.PopAsync();
                 //                Application.Current.MainPage.Navigation.PushModalAsync(new DogsPage(), true);
 

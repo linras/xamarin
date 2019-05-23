@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows.Input;
-using Xamarin.Forms;
-using SQLite;
 
 namespace MyApp.Models
 {
-    public class Dog
+    class DogViewModel
     {
-        [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -22,10 +17,9 @@ namespace MyApp.Models
         public TimeSpan Time { get; set; }
         //public List<string> People { get; set; }
         public string FilePath { get; set; }
-        
-        public Dog()
+
+        public DogViewModel()
         {
         }
-
     }
 }
